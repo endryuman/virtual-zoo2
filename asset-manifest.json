@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/virtual-zoo2/static/css/main.7acaea2f.css",
+    "main.js": "/virtual-zoo2/static/js/main.4a9c3ba3.js",
+    "index.html": "/virtual-zoo2/index.html",
+    "main.7acaea2f.css.map": "/virtual-zoo2/static/css/main.7acaea2f.css.map",
+    "main.4a9c3ba3.js.map": "/virtual-zoo2/static/js/main.4a9c3ba3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.4a9c3ba3.js"
+  ]
+}
