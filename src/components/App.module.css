@@ -1,0 +1,71 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.listItem {
+  border: solid greenyellow;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 180px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.listItemInput {
+  padding-left: 5px;
+  margin-top: 5px;
+  border-color: aquamarine;
+  border-radius: 5px;
+}
+.editButton {
+  padding: 3px;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: greenyellow;
+  color: black;
+  cursor: pointer;
+  align-self: center;
+}
+.deleteButton {
+  padding: 3px;
+  margin-top: 5px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: greenyellow;
+  color: red;
+  cursor: pointer;
+}
+.addAnimalWrapper {
+  padding-top: 20px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.addButton {
+  padding: 3px;
+  margin-top: 5px;
+  width: 100px;
+  border-radius: 5px;
+  background-color: greenyellow;
+  cursor: pointer;
+}
