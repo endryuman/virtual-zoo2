@@ -3,10 +3,12 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import css from './App.module.css';
+import { Audio } from 'react-loader-spinner';
 
 axios.defaults.baseURL = 'https://virtual-zoo-mongodb.onrender.com/';
 
 export const App = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [animals, setAnimals] = useState([]);
   const [newAnimal, setNewAnimal] = useState({
     hologram_name: '',
@@ -18,10 +20,13 @@ export const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true);
         const res = await axios.get('animals');
         setAnimals(res.data);
       } catch (err) {
         notifyE(err.message);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -30,12 +35,15 @@ export const App = () => {
 
   const deleteAnimal = async _id => {
     try {
+      setIsLoading(true);
       const res = await axios.delete(`animals/${_id}`);
       const newData = animals.filter(animal => animal._id !== _id);
       setAnimals(newData);
       notifyS(res.data.message);
     } catch (err) {
       notifyE(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -49,12 +57,15 @@ export const App = () => {
     };
     console.log(newData);
     try {
+      setIsLoading(true);
       const res = await axios.patch(`animals/${e.target.id}`, newData);
       const updatedData = await axios.get('animals');
       setAnimals(updatedData.data);
       notifyS(res.data.message);
     } catch (err) {
       notifyE(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -65,6 +76,7 @@ export const App = () => {
 
   const addAnimal = async () => {
     try {
+      setIsLoading(true);
       const res = await axios.post('animals', newAnimal);
       setNewAnimal({
         hologram_name: '',
@@ -77,6 +89,8 @@ export const App = () => {
       notifyS(res.data.message);
     } catch (err) {
       notifyE(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -86,6 +100,7 @@ export const App = () => {
   return (
     <div className={css.wrapper}>
       <h1 className={css.title}>Virtual Zoo</h1>
+
       <ul className={css.list}>
         {animals.map(animal => (
           <li className={css.listItem} key={animal._id}>
@@ -176,6 +191,18 @@ export const App = () => {
           ADD ANIMAL
         </button>
       </div>
+      {isLoading && (
+        <Audio
+          height="80"
+          width="80"
+          radius="9"
+          color="green"
+          position="absolute"
+          ariaLabel="three-dots-loading"
+          wrapperStyle
+          wrapperClass
+        />
+      )}
       <ToastContainer />
     </div>
   );
